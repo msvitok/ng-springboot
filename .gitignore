@@ -1,0 +1,9 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/backend/target
+/frontend/src/main/web/dist
+/frontend/target
+
+# IDEs and editors
+/.idea

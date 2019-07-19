@@ -1,0 +1,50 @@
+
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <mat-button-toggle-group #sort="matButtonToggleGroup" [value]="initSort">
+      <mat-button-toggle value="asc">asc</mat-button-toggle>
+      <mat-button-toggle value="desc">desc</mat-button-toggle>
+    </mat-button-toggle-group>
+
+    <mat-form-field style="top: 5px; margin: 0 1.5rem">
+      <input #limit matInput type="number" placeholder="limit" />
+    </mat-form-field>
+
+    <button mat-raised-button (click)="onSubmit(sort.value, limit.value)">submit</button>
+
+    <div id="topbar-space-holder" style="flex-grow: 1"></div>
+    <div style="">Spring Boot REST + Angular 8 | DEMO</div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<table matSort mat-table [dataSource]="dataSource" style="width: 100%">
+  <ng-container matColumnDef="code">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Code</th>
+    <td mat-cell *matCellDef="let country"> {{country.code}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="countryCode">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Country Code</th>
+    <td mat-cell *matCellDef="let country"> {{country.countryCode}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+    <td mat-cell *matCellDef="let country"> {{country.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="effectiveFrom">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Effective From</th>
+    <td mat-cell *matCellDef="let country"> {{country.effectiveFrom}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="standardVat">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Standard VAT</th>
+    <td mat-cell *matCellDef="let country"> {{country.standardVat}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
